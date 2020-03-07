@@ -1,0 +1,232 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "domain",
+    "ssl",
+    "kubernetes",
+    "hosts"
+  ],
+  "properties": {
+    "domain": {
+      "$id": "#/properties/domain",
+      "type": "object",
+      "title": "The Domain Setting Schema",
+      "default": null,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/domain/properties/name",
+          "type": "string",
+          "title": "The Domain Name Schema",
+          "default": "",
+          "examples": [
+            "contoso.local"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    },
+    "ssl": {
+      "$id": "#/properties/ssl",
+      "type": "object",
+      "title": "The Ssl Schema",
+      "required": [
+        "expiry",
+        "country",
+        "locality",
+        "organization",
+        "state"
+      ],
+      "properties": {
+        "expiry": {
+          "$id": "#/properties/ssl/properties/expiry",
+          "type": "string",
+          "title": "The Expiry Schema",
+          "default": "",
+          "examples": [
+            "8760h"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "country": {
+          "$id": "#/properties/ssl/properties/country",
+          "type": "string",
+          "title": "The Country Schema",
+          "default": "",
+          "examples": [
+            "JP"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "locality": {
+          "$id": "#/properties/ssl/properties/locality",
+          "type": "string",
+          "title": "The Locality Schema",
+          "default": "",
+          "examples": [
+            "Tokyo"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "organization": {
+          "$id": "#/properties/ssl/properties/organization",
+          "type": "string",
+          "title": "The Organization Schema",
+          "default": "",
+          "examples": [
+            "necodev"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "state": {
+          "$id": "#/properties/ssl/properties/state",
+          "type": "string",
+          "title": "The State Schema",
+          "default": "",
+          "examples": [
+            "tokyo"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    },
+    "kubernetes": {
+      "$id": "#/properties/kubernetes",
+      "type": "object",
+      "title": "The Kubernetes Schema",
+      "required": [
+        "images"
+      ],
+      "properties": {
+        "images": {
+          "$id": "#/properties/kubernetes/properties/images",
+          "type": "array",
+          "title": "The Images Schema",
+          "items": {
+            "$id": "#/properties/kubernetes/properties/images/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "name",
+              "image",
+              "version"
+            ],
+            "properties": {
+              "name": {
+                "$id": "#/properties/kubernetes/properties/images/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "hyperkube"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "image": {
+                "$id": "#/properties/kubernetes/properties/images/items/properties/image",
+                "type": "string",
+                "title": "The Image Schema",
+                "default": "",
+                "examples": [
+                  "gcr.io/google_containers/hyperkube"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "version": {
+                "$id": "#/properties/kubernetes/properties/images/items/properties/version",
+                "type": "string",
+                "title": "The Version Schema",
+                "default": "",
+                "examples": [
+                  "v1.1.3"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "hosts": {
+      "$id": "#/properties/hosts",
+      "type": "array",
+      "title": "The Hosts Schema",
+      "items": {
+        "$id": "#/properties/hosts/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "name",
+          "role",
+          "key",
+          "user",
+          "addresses"
+        ],
+        "properties": {
+          "name": {
+            "$id": "#/properties/hosts/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "ns.contoso.local"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "role": {
+            "$id": "#/properties/hosts/items/properties/role",
+            "type": "string",
+            "title": "The Role Schema",
+            "default": "",
+            "examples": [
+              "domain-server"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "key": {
+            "$id": "#/properties/hosts/items/properties/key",
+            "type": "string",
+            "title": "The Key Schema",
+            "default": "",
+            "examples": [
+              "gcp"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "user": {
+            "$id": "#/properties/hosts/items/properties/user",
+            "type": "string",
+            "title": "The User Schema",
+            "default": "",
+            "examples": [
+              "ansible"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "addresses": {
+            "$id": "#/properties/hosts/items/properties/addresses",
+            "type": "array",
+            "title": "The Addresses Schema",
+            "items": {
+              "$id": "#/properties/hosts/items/properties/addresses/items",
+              "type": "string",
+              "title": "The Items Schema",
+              "default": "",
+              "examples": [
+                "127.0.0.1",
+                "192.168.0.1"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        }
+      }
+    }
+  }
+}
